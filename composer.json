@@ -15,8 +15,8 @@
     ],
     "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/vikas26294/oauth2-server"
+            "type": "git",
+            "url": "https://github.com/vikas26294/oauth2-server.git"
         }
     ],
     "require": {
