@@ -5,7 +5,7 @@
     "license": "MIT",
     "support": {
         "issues": "https://github.com/laravel/passport/issues",
-        "source": "https://github.com/laravel/passport"
+        "source": "https://github.com/vikas26294/passport"
     },
     "authors": [
         {
@@ -31,10 +31,10 @@
         "illuminate/encryption": "~5.4",
         "illuminate/http": "~5.4",
         "illuminate/support": "~5.4",
+        "league/oauth2-server": "dev-dev-prod",
         "phpseclib/phpseclib": "^2.0",
         "symfony/psr-http-message-bridge": "~1.0",
-        "zendframework/zend-diactoros": "~1.0",
-        "league/oauth2-server": "dev-dev-prod"
+        "zendframework/zend-diactoros": "~1.0"
     },
     "require-dev": {
         "mockery/mockery": "~0.9",
