@@ -16,7 +16,9 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/vikas26294/oauth2-server"
+            "url": "https://github.com/vikas26294/oauth2-server",
+            "branches-path": true,
+            "tags-path": false
         }
     ],
     "require": {
