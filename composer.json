@@ -22,7 +22,7 @@
                 "source": {
                     "url": "https://github.com/vikas26294/oauth2-server.git",
                     "type": "git",
-                    "reference": "6.0.*@dev"
+                    "reference": "6.0.5@dev"
                 }
             }
         }
