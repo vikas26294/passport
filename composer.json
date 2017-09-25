@@ -16,9 +16,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/vikas26294/oauth2-server",
-            "branches-path": true,
-            "tags-path": false
+            "url": "https://github.com/vikas26294/oauth2-server"
         }
     ],
     "require": {
@@ -33,7 +31,7 @@
         "illuminate/encryption": "~5.4",
         "illuminate/http": "~5.4",
         "illuminate/support": "~5.4",
-        "league/oauth2-server": "dev-dev-prod",
+        "league/oauth2-server": "^6.0",
         "phpseclib/phpseclib": "^2.0",
         "symfony/psr-http-message-bridge": "~1.0",
         "zendframework/zend-diactoros": "~1.0"
