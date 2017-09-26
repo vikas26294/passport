@@ -15,16 +15,8 @@
     ],
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "league/oauth2-server",
-                "version": "dev-dev-prod",
-                "source": {
-                    "url": "https://github.com/vikas26294/oauth2-server.git",
-                    "type": "git",
-                    "reference": "6.0.6-dev"
-                }
-            }
+            "url": "https://github.com/vikas26294/oauth2-server.git",
+            "type": "git"
         }
     ],
     "require": {
@@ -39,7 +31,7 @@
         "illuminate/encryption": "~5.4",
         "illuminate/http": "~5.4",
         "illuminate/support": "~5.4",
-        "league/oauth2-server": "dev-dev-prod",
+        "league/oauth2-server": "~6.0.6@dev",
         "phpseclib/phpseclib": "^2.0",
         "symfony/psr-http-message-bridge": "~1.0",
         "zendframework/zend-diactoros": "~1.0"
