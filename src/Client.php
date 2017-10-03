@@ -40,8 +40,10 @@ class Client extends Model
         'revoked' => 'bool',
     ];
 
-    public function __construct()
+
+    public function __construct(array $attributes = array())
     {
+        parent::__construct($attributes);
         $this->table = config('auth.tables_mapping.oauth_clients');
     }
 
