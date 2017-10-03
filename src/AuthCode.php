@@ -11,7 +11,7 @@ class AuthCode extends Model
      *
      * @var string
      */
-    protected $table = 'oauth_auth_codes';
+    protected $table;
 
     /**
      * The guarded attributes on the model.
@@ -37,6 +37,11 @@ class AuthCode extends Model
     protected $dates = [
         'expires_at',
     ];
+
+    public function __construct()
+    {
+        $this->table = config('auth.tables_mapping.oauth_auth_codes');
+    }
 
     /**
      * Get the client that owns the authentication code.
