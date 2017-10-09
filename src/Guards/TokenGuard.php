@@ -110,11 +110,10 @@ class TokenGuard
         $psr = (new DiactorosFactory)->createRequest($request);
 
         try {
+            $psr = $this->server->validateAuthenticatedRequest($psr);
+            
             if (PASSPORT_DRIVER == PASSPORT_MEMORY) {
                 // memory
-                // chec if token is revoked and expired
-                $psr = $this->server->validateAuthenticatedRequestMemory($psr);
-
                 // If the access token is valid we will retrieve the user according to the user ID
                 // associated with the token. We will use the provider implementation which may
                 // be used to retrieve users from Eloquent. Next, we'll be ready to continue.
@@ -142,8 +141,6 @@ class TokenGuard
             }
 
             // database
-            $psr = $this->server->validateAuthenticatedRequest($psr);
-
             // If the access token is valid we will retrieve the user according to the user ID
             // associated with the token. We will use the provider implementation which may
             // be used to retrieve users from Eloquent. Next, we'll be ready to continue.
