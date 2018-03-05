@@ -68,7 +68,12 @@ class UserRepository implements UserRepositoryInterface
             throw new RuntimeException('Unable to determine authentication model from configuration.');
         }
 
-        $user = (new $model)->where('id', $userId)->first();
+        $model = (new $model);
+        if((method_exists($model, 'getUserProfile')){
+            $user->user_profile = $model->getUserProfile($userId);
+        }
+
+        $user = $model->where('id', $userId)->first();
         return $user;
     }
 }
