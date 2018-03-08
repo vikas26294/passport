@@ -71,7 +71,7 @@ class UserRepository implements UserRepositoryInterface
         $model = (new $model);
         $user = $model->where('id', $userId)->first();
 
-        if((method_exists($model, 'getUserProfile')){
+        if(method_exists($model, 'getUserProfile')){
             $user->user_profile = $model->getUserProfile($userId);
         }
         return $user;
