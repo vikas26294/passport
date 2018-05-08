@@ -57,10 +57,10 @@ class UserRepository implements UserRepositoryInterface
         return new User($user->getAuthIdentifier());
     }
 
-    /**
+     /**
      * {@inheritdoc}
      */
-    public function getUserEntityDataByUserCredentials($userId)
+    public function getUserEntityDataByUserCredentials($userId, $accessToken, $refreshToken, $access_expires_at, $refresh_expires_at)
     {
         $provider = config('auth.guards.api.provider');
 
@@ -73,6 +73,10 @@ class UserRepository implements UserRepositoryInterface
 
         if(method_exists($model, 'getUserProfile')){
             $user->user_profile = $model->getUserProfile($userId);
+        }
+
+        if(method_exists($model, 'loginOlderAppUsers')){
+            $model->loginOlderAppUsers($accessToken, $refreshToken, $access_expires_at, $refresh_expires_at);
         }
         return $user;
     }
