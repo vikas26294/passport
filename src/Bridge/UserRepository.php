@@ -75,8 +75,8 @@ class UserRepository implements UserRepositoryInterface
             $user->user_profile = $model->getUserProfile($userId);
         }
 
-        if(method_exists($model, 'loginOlderAppUsers')){
-            $model->loginOlderAppUsers($accessToken, $refreshToken, $access_expires_at, $refresh_expires_at);
+        if(method_exists($model, 'loginOlderAppUsersThroughApi')){
+            $model->loginOlderAppUsersThroughApi($accessToken, $refreshToken);
         }
         return $user;
     }

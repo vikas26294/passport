@@ -157,7 +157,7 @@ class PassportServiceProvider extends ServiceProvider
     {
         $repository = $this->app->make(RefreshTokenRepository::class);
 
-        return tap(new RefreshTokenGrant($repository), function ($grant) {
+        return tap(new RefreshTokenGrant($repository, $this->app->make(Bridge\UserRepository::class)), function ($grant) {
             $grant->setRefreshTokenTTL(Passport::refreshTokensExpireIn());
         });
     }
