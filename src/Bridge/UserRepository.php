@@ -57,7 +57,7 @@ class UserRepository implements UserRepositoryInterface
         return new User($user->getAuthIdentifier());
     }
 
-     /**
+    /**
      * {@inheritdoc}
      */
     public function getUserEntityDataByUserCredentials($userId, $accessToken, $refreshToken, $access_expires_at, $refresh_expires_at)
@@ -70,14 +70,19 @@ class UserRepository implements UserRepositoryInterface
 
         $model = (new $model);
         $user = $model->where('id', $userId)->first();
-
-        if(method_exists($model, 'getUserProfile')){
-            $user->user_profile = $model->getUserProfile($userId);
-        }
+        $hostToken = '';
 
         if(method_exists($model, 'loginUser')){
-            $model->loginUser($accessToken, $refreshToken, $userId);
+            $hostToken = $model->loginUser($accessToken, $refreshToken, $userId);
         }
+
+        if(method_exists($model, 'getUserProfile')){
+            $user_profile = $model->getUserProfile($userId);
+            $user_profile['host_token'] = $hostToken;
+            $user->user_profile = $user_profile;
+        }
+
         return $user;
     }
+
 }
