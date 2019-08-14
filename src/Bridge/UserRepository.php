@@ -57,4 +57,33 @@ class UserRepository implements UserRepositoryInterface
 
         return new User($user->getAuthIdentifier());
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUserEntityDataByUserCredentials($userId, $accessToken, $refreshToken, $access_expires_at, $refresh_expires_at)
+    {
+        $provider = config('auth.guards.api.provider');
+
+        if (is_null($model = config('auth.providers.'.$provider.'.model'))) {
+            throw new RuntimeException('Unable to determine authentication model from configuration.');
+        }
+
+        $model = (new $model);
+        $user = $model->where('id', $userId)->first();
+        $hostToken = '';
+
+        if(method_exists($model, 'loginUser')){
+            $hostToken = $model->loginUser($accessToken, $refreshToken, $userId);
+        }
+
+        if(method_exists($model, 'getUserProfile')){
+            $user_profile = $model->getUserProfile($userId);
+            $user_profile['host_token'] = $hostToken;
+            $user->user_profile = $user_profile;
+        }
+
+        return $user;
+    }
+
 }

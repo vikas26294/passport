@@ -11,7 +11,7 @@ class PersonalAccessClient extends Model
      *
      * @var string
      */
-    protected $table = 'oauth_personal_access_clients';
+    protected $table;
 
     /**
      * The guarded attributes on the model.
@@ -19,6 +19,11 @@ class PersonalAccessClient extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function __construct()
+    {
+        $this->table = config('auth.tables_mapping.oauth_personal_access_clients');
+    }
 
     /**
      * Get all of the authentication codes for the client.

@@ -11,7 +11,7 @@ class Token extends Model
      *
      * @var string
      */
-    protected $table = 'oauth_access_tokens';
+    protected $table;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -52,6 +52,13 @@ class Token extends Model
      * @var bool
      */
     public $timestamps = false;
+
+
+    public function __construct(array $attributes = array())
+    {
+        parent::__construct($attributes);
+        $this->table = config('auth.tables_mapping.oauth_access_tokens');
+    }
 
     /**
      * Get the client that the token belongs to.

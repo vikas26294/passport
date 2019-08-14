@@ -11,7 +11,7 @@ class AuthCode extends Model
      *
      * @var string
      */
-    protected $table = 'oauth_auth_codes';
+    protected $table;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -44,6 +44,13 @@ class AuthCode extends Model
     protected $dates = [
         'expires_at',
     ];
+
+
+    public function __construct(array $attributes = array())
+    {
+        parent::__construct($attributes);
+        $this->table = config('auth.tables_mapping.oauth_auth_codes');
+    }
 
     /**
      * Indicates if the model should be timestamped.

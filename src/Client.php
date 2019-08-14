@@ -11,7 +11,7 @@ class Client extends Model
      *
      * @var string
      */
-    protected $table = 'oauth_clients';
+    protected $table;
 
     /**
      * The guarded attributes on the model.
@@ -40,6 +40,13 @@ class Client extends Model
         'password_client' => 'bool',
         'revoked' => 'bool',
     ];
+
+
+    public function __construct(array $attributes = array())
+    {
+        parent::__construct($attributes);
+        $this->table = config('auth.tables_mapping.oauth_clients');
+    }
 
     /**
      * Get the user that the client belongs to.
